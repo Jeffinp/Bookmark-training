@@ -54,14 +54,12 @@ const dropMenus = document.querySelectorAll('.drop-down-text');
 
 faqItems.forEach((item, index) => {
   item.addEventListener('click', () => {
-    // Remove a classe 'active' de todos os itens
     faqItems.forEach((el, i) => {
       if (i !== index) {
         dropMenus[i].style.maxHeight = null;
         faqItems[i].classList.remove('active');
       }
     });
-    // Alterna a classe 'active' no item clicado e ajusta a altura
     if (dropMenus[index].style.maxHeight) {
       dropMenus[index].style.maxHeight = null;
       item.classList.remove('active');
@@ -71,7 +69,6 @@ faqItems.forEach((item, index) => {
     }
   });
 });
-
 
 // Form validation
 function validateForm() {
@@ -106,10 +103,28 @@ const mobileNav = document.getElementById("mobileNav");
 const mobileMenu = document.getElementById("mobileMenu");
 const logo = document.getElementById("logo");
 
+// Inicialmente o menu está oculto
+mobileNav.style.display = "none";
+
 mobileMenu.addEventListener('click', () => {
-  const isMenuOpen = mobileNav.style.display === "block";
-  mobileNav.style.display = isMenuOpen ? "none" : "block";
-  mobileMenu.src = isMenuOpen ? "images/icon-hamburger.svg" : "images/icon-close.svg";
-  logo.style.filter = isMenuOpen ? "invert(0)" : "invert(1) brightness(100%)";
-  mobileMenu.style.filter = isMenuOpen ? "invert(0)" : "invert(0)";
+  const isMenuOpen = mobileNav.classList.contains('active');
+
+  if (isMenuOpen) {
+    // Remove a classe 'active' e reinicia a animação
+    mobileNav.classList.remove('active');
+    void mobileNav.offsetWidth; // Força um reflow para reiniciar a animação
+    mobileNav.style.display = "none"; // Mantém o menu oculto após a animação
+    mobileMenu.src = "images/icon-hamburger.svg";
+    logo.style.filter = "invert(0)";
+    mobileMenu.style.filter = "invert(0)";
+  } else {
+    // Mostra o menu e adiciona a classe 'active' para animar a abertura
+    mobileNav.style.display = "block";
+    requestAnimationFrame(() => {
+      mobileNav.classList.add('active');
+    });
+    mobileMenu.src = "images/icon-close.svg";
+    logo.style.filter = "invert(1) brightness(100%)";
+    mobileMenu.style.filter = "invert(0)";
+  }
 });
