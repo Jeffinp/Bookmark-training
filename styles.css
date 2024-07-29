@@ -668,8 +668,6 @@ footer .attribution a {
     max-height: 500px; /* Ajuste conforme necessário */
   }
   
-/* Base styles */
-
 /* Responsive design starts here */
 @media (max-width: 991px) {
     /* General Styles */
@@ -678,11 +676,11 @@ footer .attribution a {
     }
 
     .hero nav ul {
-        display: none; /* Hide desktop nav links */
+        display: none; 
     }
 
     .hero nav .mobile-menu {
-        display: block; /* Show mobile menu button */
+        display: block;
         z-index: 1000;
         position: relative;
         filter: invert(0);
@@ -930,11 +928,11 @@ footer .attribution a {
         z-index: 10;
         overflow-y: auto;
         transition: transform 0.3s ease;
-        transform: translateX(100%); /* Slide out of view */
+        transform: translateX(100%); 
     }
 
     .mobile-navigation.active {
-        transform: translateX(0); /* Slide in view */
+        transform: translateX(0); 
     }
 
     .mobile-navigation nav {
@@ -979,7 +977,7 @@ footer .attribution a {
     }
 
     .mobile-menu-button {
-        display: block; /* Show mobile menu button */
+        display: block; 
         cursor: pointer;
     }
 
