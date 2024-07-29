@@ -15,7 +15,7 @@ html, body {
 .hero {
     padding: 2rem 7rem;
     min-height: 100vh;
-    background: linear-gradient(to right, #f7f8f8, #acbb78);
+    
     transition: background 0.3s ease-in-out;
 }
 
